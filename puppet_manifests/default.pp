@@ -214,7 +214,6 @@ class {
     apache:      stage => "apache";
     mysql:       stage => "mysql";
     php:         stage => "php";
-    drupal:      stage => "drupal";
     solr:        stage => "solr";
     services:    stage => "services";
 }

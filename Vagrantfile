@@ -21,4 +21,9 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   config.vm.synced_folder "..", "/vagrant"
 
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = "puppet_manifests"
+    puppet.manifest_file = "default.pp"
+  end
+
 end

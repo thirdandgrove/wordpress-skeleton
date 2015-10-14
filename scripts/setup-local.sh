@@ -10,7 +10,7 @@ if [[ ! -f ~/dump.sql ]] ; then
   exit
 fi
 
-HOST=$(grep -E "ip: ([^[:space:]]+)" config.yaml | tr -d 'ip: ')
+HOST=$(grep -E "ip: ([^[:space:]]+)" wordpress-skeleton/config.yaml | tr -d 'ip: ')
 
 echo "Clearing memcache entries"
 echo "flush_all" | nc ${HOST} 11211

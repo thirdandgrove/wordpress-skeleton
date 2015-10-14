@@ -157,16 +157,6 @@ class php {
     }
 }
 
-class drupal {
-    exec {
-        "secret-settings":
-            command => '/bin/cp /vagrant/docroot-goodies/example.local.settings.php /vagrant/docroot/sites/default/local.settings.php',
-            onlyif => '/bin/ls /vagrant/docroot-goodies/example.local.settings.php',
-            onlyif => '/bin/ls /vagrant/docroot/sites/default',
-            unless => '/bin/ls /vagrant/docroot/sites/default/local.settings.php';
-    }
-}
-
 class solr {
     exec {
         "download":

@@ -1,0 +1,8 @@
+#
+# Example of how to configure your Vagrant box.
+# Create a new file named config.yaml from this file.
+#
+---
+config:
+  hostname: local.example.com
+  ip: 192.168.50.10

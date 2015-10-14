@@ -3,6 +3,5 @@
 # Create a new file named config.yaml from this file.
 #
 ---
-config:
-  hostname: local.example.com
-  ip: 192.168.50.10
+hostname: local.example.com
+ip: 192.168.50.10

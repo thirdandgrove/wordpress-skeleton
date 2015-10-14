@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-if [[ -f prod-data.sh ]] ; then
-  ./prod-data.sh
+if [[ -f wordpress-skeleton/scripts/prod-data.sh ]] ; then
+  ./wordpress-skeleton/scripts/prod-data.sh
 fi
 
 if [[ ! -f ~/dump.sql ]] ; then

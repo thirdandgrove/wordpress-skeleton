@@ -127,31 +127,6 @@ class php {
         "php-cli-apc":
             command => '/bin/echo "apc.rfc1867 = 1" >> /etc/php5/cli/php.ini';
 
-        "php-pecl-upload":
-            command => '/usr/bin/sudo pecl install -Z uploadprogress',
-            unless => '/bin/ls /usr/share/doc/php5/PEAR/uploadprogress';
-        "php-ini-progress":
-            command => '/bin/echo "extension=uploadprogress.so" >> /etc/php5/apache2/php.ini',
-            require => Exec['php-pecl-upload'];
-
-        "php-discover-drush":
-            command => '/usr/bin/pear channel-discover pear.drush.org',
-            unless => '/bin/ls /usr/share/php/drush';
-        "php-install-drush":
-            command => '/usr/bin/pear install -Z drush/drush',
-            unless => '/bin/ls /usr/share/php/drush',
-            require => Exec['php-discover-drush'];
-
-        "console-table-download":
-            command => '/usr/bin/wget http://download.pear.php.net/package/Console_Table-1.1.3.tgz',
-            unless => '/bin/ls /usr/share/php/drush/lib/Console_Table-1.1.3';
-        "console-table-untar":
-            command => '/bin/tar -zxvf Console_Table-1.1.3.tgz',
-            require => Exec['console-table-download'];
-        "console-table-install":
-            command => '/bin/cp -r Console_Table-1.1.3 /usr/share/php/drush/lib/',
-            require => Exec['console-table-untar'];
-
         "memcached-bind-address":
             command => '/usr/bin/sudo cp /vagrant/wordpress-skeleton/vagrant/memcached.conf /etc/memcached.conf';
     }

@@ -29,7 +29,7 @@ class folders {
 class updates {
     exec {
         "add-php-repository":
-            command => '/usr/bin/add-apt-repository -y ppa:ondrej/php5-5.6',
+            command => '/usr/bin/add-apt-repository -y ppa:ondrej/php',
             timeout => 0;
         "aptitude-update":
             command => "/usr/bin/aptitude update -y -q",
@@ -59,6 +59,7 @@ class packages {
             "php5-apcu",
             "php5-curl",
             "php5-mysql",
+            "php-mysql",
             "php5-mcrypt",
             "php5-memcache",
             "php5-redis",
@@ -66,6 +67,17 @@ class packages {
             "tomcat6",
             ]:
         ensure => "present",
+    }
+    exec { 'Install WP CLI':
+        command => "/usr/bin/curl -o /usr/bin/wp -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar",
+        require => [ Package['curl'], Package['php5-cli'] ],
+        creates => "/usr/bin/wp"
+    }
+
+    # Change the mode of WP-CLI to a+x
+    file { '/usr/bin/wp':
+        mode => "775",
+        require => Exec['Install WP CLI']
     }
 }
 

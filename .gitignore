@@ -1,0 +1,4 @@
+.vagrant
+config.yaml
+wp-goodies/wp-config-local.php
+scripts/prod-data.sh
